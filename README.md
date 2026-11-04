@@ -58,7 +58,26 @@ La tasa de aprendizaje controla el tamaño de las actualizaciones de los pesos. 
 
 La exploración muestra clases balanceadas y textos de entrenamiento de entre 19 y 138 caracteres. El notebook incluye ejemplos y figuras con salidas reales.
 
-El notebook genera `comparacion_experimentos.csv`, `metricas_prueba.csv`, un reporte por clase y la matriz de confusión. Accuracy es la proporción de aciertos. F1 macro combina precisión y recall por clase y da el mismo peso a los tres sentimientos. La configuración ganadora y sus métricas de prueba se reportan con las salidas de la ejecución.
+El notebook publicado contiene la ejecución completa en Google Colab con GPU Tesla T4. Las tres configuraciones terminaron sus tres épocas y se compararon usando validación:
+
+| Learning rate | F1 macro de validación | Accuracy de validación |
+|---|---:|---:|
+| **2e-5** | **0,6952** | **0,6975** |
+| 3e-5 | 0,6843 | 0,6883 |
+| 5e-5 | 0,6732 | 0,6790 |
+
+Ganó **BETO con learning rate 2e-5**. La evaluación final sobre los 870 tweets de prueba produjo:
+
+| Modelo | Accuracy de prueba | F1 macro de prueba |
+|---|---:|---:|
+| Referencia constante | 0,3333 | 0,1667 |
+| **BETO seleccionado** | **0,6885** | **0,6886** |
+
+El modelo acertó **599 tweets de 870 (68,85 %)** y cometió 271 errores. El sentimiento neutro tuvo el menor F1 (0,5966); positivo obtuvo 0,7443 y negativo 0,7248. La confusión individual más frecuente fue clasificar como negativos 65 tweets neutros.
+
+BETO superó la referencia constante en esta ejecución. La selección del modelo utilizó exclusivamente validación; prueba se reservó para evaluar la configuración elegida. Accuracy es la proporción de aciertos y F1 macro da el mismo peso a las tres clases al promediar su F1.
+
+Las salidas guardadas incluyen las tablas de comparación, el reporte por clase, la matriz de confusión y ejemplos de errores y predicciones. Al ejecutarlo también se generan `comparacion_experimentos.csv` y `metricas_prueba.csv`.
 
 ## Limitaciones
 
