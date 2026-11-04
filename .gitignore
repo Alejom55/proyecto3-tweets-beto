@@ -1,0 +1,12 @@
+__pycache__/
+.ipynb_checkpoints/
+.venv/
+.cache/
+resultados_tweets/experimentos_*/
+resultados_tweets/mejor_modelo/
+resultados_tweets/evaluacion/
+resultados_tweets.zip
+*.safetensors
+pytorch_model.bin
+*.pt
+.env
